@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/code/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <title>Ranek</title>
+</head>
+<body>
+    <header class="header-menu container-global">
+        <a href="/code/index.html">
+            <img src="/img/RanekLogoTipo.svg" alt="Logo Ranek">
+        </a>
+        <a data-btn-conta-ou-login class="btn-principal" href="#"></a>
+    </header>
+    <main class="conta-container ">
+        <div class="btns-conta-card">
+            <ul class="lista-btns">
+                <li data-links-tabNav class="btns-link ativo"><a  href="#">Produtos</a></li>
+                <li data-links-tabNav class="btns-link"><a  href="#">Compras</a></li>
+                <li data-links-tabNav class="btns-link"><a  href="#">Vendas</a></li>
+                <li data-links-tabNav class="btns-link"><a  href="#">Editar Usuário</a></li>
+                <li data-btn-logof class="btns-link"><a  href="#">Deslogar</a></li>
+            </ul>
+        </div>
+        <div data-container-modal class="container-infos-card on">
+            <h2>Adicionar Produto</h2>
+            <div class="formulario-container">
+                <form action="get">
+                    <div class="login-campo-item">
+                        <label for="email">Nome</label>
+                        <input type="email" name="Email" id="email">
+                    </div>
+                    <div class="login-campo-item">
+                        <label for="preco">preco  (R$)</label>
+                        <input type="text" name="preco" id="preco">
+                    </div>
+                    <div class="login-campo-item">
+                        <label for="Fotos">Fotos</label>
+                        <input type="file" name="Fotos" id="Fotos">
+                    </div>
+                    <div class="login-campo-item">
+                        <label for="Descrição">Descrição</label>
+                        <textarea name="Descrição" id="Descrição"></textarea>
+                    </div>
+                    <div class="btn-div postar-div-btn">
+                        <a data-btn-login class="btn-principal" href="#">Adicionar Produto</a>
+                    </div>
+                </form>
+            </div>
+            <div class="meus-produtos">
+                <h2 class="">Meus produtos</h2>
+                <div data-conteudo-meus-produtos class="conteudo-meus-produtos">
+
+                </div>
+            </div>
+        </div>
+        <div data-container-modal class="container-infos-card">
+            <h2>Compras</h2>
+    
+        </div>
+        <div data-container-modal class="container-infos-card">
+            <h2>Vendas</h2>
+            
+            </div>
+        </div>
+        <div data-container-modal class="container-infos-card">
+            <h1></h1>
+            <form action="get">
+                <div class="login-campo-item">
+                    <label for="Nome">Nome</label>
+                    <input data-nome type="Nome" name="Nome" id="nome-user">
+                </div>
+                <div class="login-campo-item">
+                    <label for="email">Email</label>
+                    <input data-email type="email" name="Email" id="email-user">
+                </div>
+                <div class="login-campo-item">
+                    <label for="Senha">Senha</label>
+                    <input data-senha type="Senha" name="Senha" id="senha-user">
+                </div>
+                <div class="login-campo-item">
+                    <label for="Cep">Cep</label>
+                    <input data-cep type="Cep" name="Cep" id="cep-user">
+                </div>
+                <div class="login-campo-item">
+                    <label for="Rua">Rua</label>
+                    <input data-Rua type="Rua" name="Rua" id="Rua-user">
+                </div>
+                <div class="login-campo-item">
+                    <label for="Numero">Numero</label>
+                    <input data-Numero type="Numero" name="Numero" id="Numero-user">
+                </div>
+                <div class="login-campo-item">
+                    <label for="Bairro">Bairro</label>
+                    <input data-Bairro type="Bairro" name="Bairro" id="Bairro-user">
+                </div>
+                <div class="login-campo-item">
+                    <label for="Cidade">Cidade</label>
+                    <input data-Cidade type="Cidade" name="Cidade" id="Cidade-user">
+                </div>
+                <div class="login-campo-item">
+                    <label for="Estado">Estado</label>
+                    <input data-Estado type="Estado" name="Estado" id="Estado-user">
+                </div>
+                <div  class="btn-div btn">
+                    <a data-btn-criar-usuario class="btn-principal" href="#">Atualizar Usuário</a>
+                </div>
+            </form>
+        </div>
+    </main>
+    <script type="module" src="../script/script.js"></script>
+</body>
+</html>
