@@ -197,67 +197,15 @@ header img{
 .flex-item{
     gap: 1.5rem;
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: 1fr 1fr;
     justify-content: start;
 }
-
-/* Adicione esta parte ao seu CSS existente */
-.produto-page {
-    position: sticky;
-    top: 60px;
-}
-
-.heigth{
-    height: 50rem;
-}
-
-.heigth2{
-    height: 70rem;
-}
-
-.produto-page h2{
-    position: sticky;
-    top: 20px;
-}
-
-@media(max-width:750px){
-    .heigth{
-        height: auto;
-    }
-    
-    .heigth2{
-        height: auto;
-    }
-}
-
-.produto-page h2{
-    font-size: 2rem;
-}
-
-.produto-page p{
-    font-size: 1.5rem;
-    margin: .6rem 0;
-}
-
-.preco-produto{
-    position: sticky;
-    top: 70px;
-}
-
-.descricao-produtos{
-    position: sticky;
-    top: 115px;
-}
-
-.stick{
-    margin: 30px 0 ;
-    display: inline-block;
-    position: sticky;
-    top: 230px;
-}
-
 .produto-page p:last-child{
     margin-top: 2rem;
+}
+
+.produto-page p, a{
+    margin: .8rem 0;
 }
 
 /* PAGE LOGIN */
@@ -415,11 +363,7 @@ footer{
     color: #fff;
     background-color: #f4f7fc;
 }
-.lista-btns li {
-    border-radius: .4rem;
-    display: block;
-    background-color: #f4f7fc;
-}
+
 .lista-btns li > a {
     display: block;
   color: #345;
@@ -429,11 +373,12 @@ footer{
     font-family: var(--font-family);
     display: grid;
     max-width: 900px;
+    padding-bottom: 3rem;
     justify-content: center;
     margin: 0 auto;
     grid-template-columns: minmax(140px,200px) 1fr;
     margin-top: 4rem;
-    height: 100rem;
+    height: auto;
     gap: 3rem;
 }
 
@@ -473,7 +418,7 @@ footer{
 
 [data-links-tabNav]{
     color: #fff;
-    background-color: #87f ;
+    background-color: #fff ;
 }
 [data-links-tabNav].ativo a{
     color: #fff;
@@ -542,4 +487,41 @@ footer{
 
 [data-produtos-item]{
     justify-content: center;
+}
+
+[data-btn-comprar-produto]{
+    background-color: #e80 !important;
+}
+
+.produtos-item2{
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr 1fr;
+}
+
+.nome-produto-page{
+    color: #345;
+    font-size: 2.5rem;
+}
+
+.preco-produto-page{
+    color: #e80;
+    font-weight: 700;
+    margin: 1.2rem 0;
+    font-size: 1.5rem;
+}
+
+[data-formulario-abrir]{
+    margin-top: 1.5rem;
+}
+
+[data-formulario-abrir] input{
+    width: auto;
+}
+
+.btn-comprar{
+    background-color: #e80;
+    padding: 1rem 1.3rem;
+    color: #fff;
+    border-radius: .3rem;
 }

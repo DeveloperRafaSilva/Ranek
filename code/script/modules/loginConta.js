@@ -18,7 +18,7 @@ export default function loginUsuario(){
             },
             body:JSON.stringify(dadosLogin)
         }
-        fetch(url,corpoAPI).then( response =>  response.json()).then(dados => {
+        fetch(url,corpoAPI).then(response => response.json()).then(dados => {
             if(!!dados.token){
                 window.localStorage.setItem("token",dados.token)
                 window.localStorage.setItem("dados",dados.user_display_name)
@@ -31,7 +31,8 @@ export default function loginUsuario(){
         })
     }
     if(dataBtnLogin !== null){
-        dataBtnLogin.addEventListener("click",()=>{
+        dataBtnLogin.addEventListener("click",(e)=>{
+            e.preventDefault()
             fazerLogin(urlApiLogin)
         })
     }

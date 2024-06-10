@@ -8,7 +8,8 @@ export default function ModalClick(){
    }
    if(dataBtnCriarContaModal !== null){
 
-      dataBtnCriarContaModal.addEventListener("click",()=>{
+      dataBtnCriarContaModal.addEventListener("click",(e)=>{
+         e.preventDefault()
          dataModalCriarConta.style.display = "flex"
          dataBtnCriarContaModal.style.display = "none"
       })

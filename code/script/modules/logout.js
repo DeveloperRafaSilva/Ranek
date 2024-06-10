@@ -2,7 +2,8 @@ export default function logOut(){
     const dataBtnLogof = document.querySelector("[data-btn-logof]")
 
     if(dataBtnLogof !== null){
-        dataBtnLogof.addEventListener("click",()=>{
+        dataBtnLogof.addEventListener("click",(e)=>{
+            e.preventDefault()
             window.localStorage.removeItem("token")
             window.localStorage.removeItem("dados")
             window.localStorage.removeItem("dadosUsuario")

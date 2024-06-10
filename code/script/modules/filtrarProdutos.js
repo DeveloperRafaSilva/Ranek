@@ -8,20 +8,38 @@ export default function filtrarProdutos(){
        fetch(`https://ranekapi.origamid.dev/json/api/produto/?q=${Pesquisa.value}`).then(response => response.json()).then(dados => {
          const transformarEmArray = Array.from(dados)
          dataProdutosItem.innerHTML = ""
-         transformarEmArray.forEach(itemProdutos =>{        
+         transformarEmArray.forEach(itemProdutos =>{    
+         if(itemProdutos.fotos === null){
             let criarEstruturaHtml =  document.createElement("div") 
             criarEstruturaHtml.innerHTML = `
             <div data-index-produto class="card-item-produtos">
             <div>
-               <img src="${itemProdutos.fotos[0].src}" alt="Produto eletrônicos" />
             </div>
-            <p class="preco-produto2">R$${itemProdutos.preco}</p>
-            <h2 class="nome-produto">${itemProdutos.nome}</h2>
-            <p class="descricao-produtos2">${itemProdutos.descricao}</p>
+            <div class="conteudo-produto-texto"> 
+               <p class="preco-produto2">R$${itemProdutos.preco}</p>
+               <h2 class="nome-produto">${itemProdutos.nome}</h2>
+               <p class="descricao-produtos2">${itemProdutos.descricao}</p>
             </div>
-         `   
+            </div>
+            `   
          dataProdutosItem.appendChild(criarEstruturaHtml)
-      })
+      }else{
+         let criarEstruturaHtml =  document.createElement("div") 
+         criarEstruturaHtml.innerHTML = `
+         <div data-index-produto class="card-item-produtos">
+         <div>
+         <img src="${itemProdutos.fotos[0].src}" alt="Produto eletrônicos" />
+         </div>
+         <p class="preco-produto2">R$${itemProdutos.preco}</p>
+         <h2 class="nome-produto">${itemProdutos.nome}</h2>
+         <p class="descricao-produtos2">${itemProdutos.descricao}</p>
+         </div>
+         `   
+      dataProdutosItem.appendChild(criarEstruturaHtml)
+   }
+   })
+
+      console.log(transformarEmArray)
 
       if(transformarEmArray.length === 0){
          const criarElemento = document.createElement("span")
@@ -29,10 +47,14 @@ export default function filtrarProdutos(){
          criarElemento.innerHTML = "Busca sem resultados. Tente buscar outro termo."
          dataProdutosItem.style.display = "flex"
          dataProdutosItem.appendChild(criarElemento)
+      }else{
+         dataProdutosItem.style.display = "grid"
+         
       }
       const dataIndexProdutos = document.querySelectorAll("[data-index-produto]")
       dataIndexProdutos.forEach((itemClick,index) =>{
-         itemClick.addEventListener("click",()=>{
+         itemClick.addEventListener("click",(e)=>{
+            e.preventDefault()
           pegarIdProduto(index)
          })
       })
@@ -51,7 +73,10 @@ export default function filtrarProdutos(){
    }
    }
 
-   dataImagemBusca.addEventListener("click",()=>{
-    pesquisarProduto()
-   })
+   if(dataImagemBusca !== null){
+      dataImagemBusca.addEventListener("click",(e)=>{
+         e.preventDefault()
+         pesquisarProduto()
+      })
+   }
 }

@@ -31,23 +31,23 @@
             <div class="formulario-container">
                 <form action="get">
                     <div class="login-campo-item">
-                        <label for="email">Nome</label>
-                        <input type="email" name="Email" id="email">
+                        <label for="nome-produto">Nome</label>
+                        <input type="nome-produto" name="nome-produto" id="nome-produto">
                     </div>
                     <div class="login-campo-item">
                         <label for="preco">preco  (R$)</label>
-                        <input type="text" name="preco" id="preco">
+                        <input type="text" name="preco" id="preco-produto">
                     </div>
                     <div class="login-campo-item">
                         <label for="Fotos">Fotos</label>
-                        <input type="file" name="Fotos" id="Fotos">
+                        <input type="file" name="Fotos" id="fotos-produto" multiple="multiple">
                     </div>
                     <div class="login-campo-item">
                         <label for="Descrição">Descrição</label>
-                        <textarea name="Descrição" id="Descrição"></textarea>
+                        <textarea name="Descrição" id="descricao-produto"></textarea>
                     </div>
                     <div class="btn-div postar-div-btn">
-                        <a data-btn-login class="btn-principal" href="#">Adicionar Produto</a>
+                        <a data-btn-postar class="btn-principal" href="#">Adicionar Produto</a>
                     </div>
                 </form>
             </div>
@@ -60,7 +60,7 @@
         </div>
         <div data-container-modal class="container-infos-card">
             <h2>Compras</h2>
-    
+            <div data-conteudo-compras class="conteudo-compras"></div>
         </div>
         <div data-container-modal class="container-infos-card">
             <h2>Vendas</h2>
@@ -68,7 +68,6 @@
             </div>
         </div>
         <div data-container-modal class="container-infos-card">
-            <h1></h1>
             <form action="get">
                 <div class="login-campo-item">
                     <label for="Nome">Nome</label>
@@ -107,7 +106,7 @@
                     <input data-Estado type="Estado" name="Estado" id="Estado-user">
                 </div>
                 <div  class="btn-div btn">
-                    <a data-btn-criar-usuario class="btn-principal" href="#">Atualizar Usuário</a>
+                    <a data-btn-atualizar-usuario class="btn-principal" href="#">Atualizar Usuário</a>
                 </div>
             </form>
         </div>

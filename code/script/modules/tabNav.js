@@ -3,8 +3,8 @@ export default function tabNav(){
     const dataContainerModal = document.querySelectorAll("[data-container-modal]")
 
     dataLinksTabNav.forEach((itemClikc,index)=>{
-        itemClikc.addEventListener("click",()=>{
-            
+        itemClikc.addEventListener("click",(e)=>{
+            e.preventDefault()
             aparecerModal(index)
         })
     })
