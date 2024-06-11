@@ -15,15 +15,16 @@ export default function pegarDadosDoUsuario(){
             method:"GET",
             headers:{
             "Content-Type": "application/json",
-            "Authorization": `Bearer   ${token}`
+            "Authorization": `Bearer ${token}`
             }
         })
 
-        if(window.location.href === "http://127.0.0.1:5500/code/PageConta/conta.html"){
+        if(window.location.href === "http://127.0.0.1:5500/code/PageConta/conta.html" || window.location.href === "http://127.0.0.1:5500/code/PageConta/conta.html#"){
 
         
 
         const dados = await response.json()
+        console.log(dados)
         if(dados){
             nome.value = dados.nome
             email.value = dados.email

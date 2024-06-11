@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
     const loadingDiv = document.querySelector(".loading-div")
     const usuarioQueComprou = localStorage.getItem("username");
-    const vendedorProduto = localStorage.getItem("vendedorId");
     const indexProduto = localStorage.getItem("indexProdutoItem");
     const dataProdutosItem = document.querySelector("[data-produtos-item2 ]");
     
@@ -155,20 +154,19 @@ document.addEventListener("DOMContentLoaded", function() {
             dataComprarProduto.addEventListener("click",()=>{
                 comprarProduto(dadosProdutos,dados)
             })
-        }
-        
-
+        }  
      async   function comprarProduto(produtoAComprar,dadosdeCompra){
 
-        console.log(produtoAComprar)
             const dadosDeCompras = {
                 comprador_id:usuarioQueComprou,
                 endereco:[{
                     dadosdeCompra
                     }],
                 produto:produtoAComprar,
-                vendedor_id:vendedorProduto,
+                vendedor_id:produtoAComprar.usuario_id,
             }
+
+            window.localStorage.setItem("vendedorId",produtoAComprar.usuario_id)
 
             const corpoApi = {
                 method:"POST",
@@ -180,7 +178,7 @@ document.addEventListener("DOMContentLoaded", function() {
             }
             const response = await fetch("https://ranekapi.origamid.dev/json/api/transacao",corpoApi)
             const dados = await response.json()
-            
+
         }
 
         criarAPaginaDosProdutos(`https://ranekapi.origamid.dev/json/api/produto/${indexProduto}`);

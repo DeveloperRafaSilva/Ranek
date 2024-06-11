@@ -203,11 +203,6 @@ header img{
 .produto-page p:last-child{
     margin-top: 2rem;
 }
-
-.produto-page p, a{
-    margin: .8rem 0;
-}
-
 /* PAGE LOGIN */
 
 .login-container{
@@ -524,4 +519,69 @@ footer{
     padding: 1rem 1.3rem;
     color: #fff;
     border-radius: .3rem;
+}
+
+.produtos-comprados-container{
+    margin-top: 1.5rem;
+    display: flex;
+    align-items: end;
+    gap: 1rem;
+}
+
+.card-produtos-comprados{
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+.produtos-comprados-container img{
+    width: 160px;
+    height: 120px;
+    object-fit: cover;
+    overflow: hidden;
+}
+
+.nome-produto{
+    font-weight: 800;
+    font-size: 1.45rem;
+    color: #345;
+}
+
+.vendedor-nome{
+    color: #e80;
+}
+
+.preco-produto-comprado{
+    font-size: 1.25rem;
+    font-weight: 400;
+}
+
+.container-vendas{
+    margin-top: 1.5rem;
+}
+
+.container-vendas img{
+    width: 200px;
+    height: 150px;
+}
+
+
+.dados-de-entrega{
+    margin: 1rem 0;
+}
+
+.produtos-comprados-container2{
+    gap: 1.5rem;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: end;
+}
+
+.titulo-de-entrega{
+    color: #345;
+    text-align: right;
+    align-self: self-start;
+}
+
+.infos-da-entrega p{
+    margin: .2rem 0;
 }

@@ -69,7 +69,7 @@ export default function criarUsuarioApi() {
                 console.log(dados);
                 window.localStorage.setItem("token", dados.token);
                 window.localStorage.setItem("username", dados.user_email);
-                // window.location.href = "http://127.0.0.1:5500/code/PageConta/conta.html#"
+                window.location.href = "http://127.0.0.1:5500/code/PageConta/conta.html#"
             });
     }
 
