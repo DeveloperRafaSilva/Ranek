@@ -39,10 +39,12 @@ export default function atualizarDados(){
         console.log(dados)
     }
 
-    dataBtnAtualizarUsuario.addEventListener("click",(e)=>{
-        e.preventDefault()
+    if(dataBtnAtualizarUsuario !== null){
+        dataBtnAtualizarUsuario.addEventListener("click",(e)=>{
+            e.preventDefault()
         atualizarDados(`https://ranekapi.origamid.dev/json/api/usuario/`)
     })
+}
 
     
 }

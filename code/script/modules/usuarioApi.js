@@ -42,7 +42,6 @@ export default function criarUsuarioApi() {
                     dataMenssagemDeErroUsuario.innerHTML = dados.message;
                 } else {
                     window.localStorage.setItem("dadosUsuario", dados.display_name);
-                    window.localStorage.setItem("idUsuario", dados.ID);
                     console.log(dados)
                     fazerLoginAutomatico("https://ranekapi.origamid.dev/json/jwt-auth/v1/token", email, senha);
                 }

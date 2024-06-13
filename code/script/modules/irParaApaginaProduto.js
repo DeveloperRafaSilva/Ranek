@@ -2,11 +2,9 @@ document.addEventListener("DOMContentLoaded", function() {
     const loadingDiv = document.querySelector(".loading-div")
     const usuarioQueComprou = localStorage.getItem("username");
     const indexProduto = localStorage.getItem("indexProdutoItem");
-    const dataProdutosItem = document.querySelector("[data-produtos-item2 ]");
-    
+    const dataProdutosItem = document.querySelector("[data-produtos-item2 ]")
     const token = window.localStorage.getItem("token")      
     // CODIGO DO PRODUTO PARA COLOCAR NA PÁGINA
-
     async function criarAPaginaDosProdutos(url){
         loadingDiv.style.display = "none"
         const corpoApiProduto = {
@@ -24,22 +22,34 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     function criarHtmlDoProdutoItem(dadosProdutos){
-        const criarImagemDoProduto = document.createElement("div")
-        if(dadosProdutos.fotos[1] === undefined){
+        console.log(dadosProdutos)
+        if(dadosProdutos.fotos === null || dadosProdutos.fotos === undefined){
+            const criarImagemDoProduto = document.createElement("div")
+            criarImagemDoProduto.classList.add("colum-1")
             criarImagemDoProduto.innerHTML = `
+            <div>
+            
+            </div>
+            `
+            dataProdutosItem.appendChild(criarImagemDoProduto)
+            }else if(dadosProdutos.fotos[1] === undefined){
+                const criarImagemDoProduto = document.createElement("div")
+                criarImagemDoProduto.innerHTML = `
                 <div>
                     <img src="${dadosProdutos.fotos[0].src}" alt="${dadosProdutos.fotos[0].titulo}" />
                 </div>
-            `
-            }else{
-            criarImagemDoProduto.innerHTML = `
+                `
+                dataProdutosItem.appendChild(criarImagemDoProduto)
+                }else{
+                    const criarImagemDoProduto = document.createElement("div")
+                    criarImagemDoProduto.innerHTML = `
                 <div>
                     <img src="${dadosProdutos.fotos[0].src}" alt="${dadosProdutos.fotos[0].titulo}" />
                     <img src="${dadosProdutos.fotos[1].src}" alt="${dadosProdutos.fotos[1].titulo}" />
                 </div>
             `
-        }
-        dataProdutosItem.appendChild(criarImagemDoProduto)
+            dataProdutosItem.appendChild(criarImagemDoProduto)
+         }
         const criarCorpoDoProduto = document.createElement("div")
         criarCorpoDoProduto.innerHTML = `
             <div>
@@ -153,19 +163,17 @@ document.addEventListener("DOMContentLoaded", function() {
             const dataComprarProduto = document.querySelector("[data-btn-comprar-produto ]")
             dataComprarProduto.addEventListener("click",()=>{
                 comprarProduto(dadosProdutos,dados)
-            })
-        }  
-     async   function comprarProduto(produtoAComprar,dadosdeCompra){
+                })
+                }  
+                async   function comprarProduto(produtoAComprar,dadosdeCompra){
+         console.log(produtoAComprar)
 
             const dadosDeCompras = {
                 comprador_id:usuarioQueComprou,
-                endereco:[{
-                    dadosdeCompra
-                    }],
-                produto:produtoAComprar,
                 vendedor_id:produtoAComprar.usuario_id,
+                endereco:dadosdeCompra,
+                produto:produtoAComprar,
             }
-
             window.localStorage.setItem("vendedorId",produtoAComprar.usuario_id)
 
             const corpoApi = {

@@ -14,24 +14,46 @@ export default function pegarDadosDeCompras(){
     const response = await fetch(url,corpoApi)
     const dados = await response.json()
     const arrayProdutosComprados = Array.from(dados)
-    arrayProdutosComprados.forEach(produtosComprados =>{
+        arrayProdutosComprados.forEach(produtosComprados =>{
+        const transformarPreco = produtosComprados.produto.preco
+        const novoString = transformarPreco.slice(0,1) + "." +  transformarPreco.slice(1) 
         const criarDivParaOsElementosDeCompra = document.createElement("div")
-        criarDivParaOsElementosDeCompra.innerHTML = `
-        <div class="produtos-comprados-container">
-            <div>
-                <img src="${produtosComprados.produto.fotos[0].src}" alt="${produtosComprados.titulo}"/>
+        if(produtosComprados.produto.fotos === null){
+            criarDivParaOsElementosDeCompra.innerHTML = `
+            <div class="produtos-comprados-container">
+                <div>
+                    
+                </div>
+                <div class="card-produtos-comprados">
+                    <p class="preco-produto-comprado">R$ ${novoString},00</p>
+                    <p class="nome-produto">R$${produtosComprados.produto.nome}</p>
+                    <p><span class="vendedor-nome">vendedor</span> ${produtosComprados.produto.usuario_id}</p>
+                </div>
             </div>
-            <div class="card-produtos-comprados">
-                <p class="preco-produto-comprado">R$ ${produtosComprados.produto.preco}</p>
-                <p class="nome-produto">${produtosComprados.produto.nome}</p>
-                <p><span class="vendedor-nome">vendedor</span> ${produtosComprados.produto.usuario_id}</p>
-            </div>
-        </div>
             `
-        dataConteudoCompras.appendChild(criarDivParaOsElementosDeCompra)
+            if(dataConteudoCompras !== null){
+                dataConteudoCompras.appendChild(criarDivParaOsElementosDeCompra)
+            }
+          }else{
+            criarDivParaOsElementosDeCompra.innerHTML = `
+            <div class="produtos-comprados-container">
+                <div>
+                    <img src="${produtosComprados.produto.fotos[0].src}" alt="${produtosComprados.titulo}"/>
+                </div>
+                <div class="card-produtos-comprados">
+                    <p class="preco-produto-comprado">R$ ${novoString},00</p>
+                    <p class="nome-produto">R$${produtosComprados.produto.nome}</p>
+                    <p><span class="vendedor-nome">vendedor</span> ${produtosComprados.produto.usuario_id}</p>
+                </div>
+            </div>
+            `
+          }
+        if(dataConteudoCompras !== null){
+            dataConteudoCompras.appendChild(criarDivParaOsElementosDeCompra)
+        }
     })
    }
 
-   pegarDadosDeCompras(`https://ranekapi.origamid.dev/json/api/transacao?comprador_id${idUsuario}`)
+   pegarDadosDeCompras(`https://ranekapi.origamid.dev/json/api/transacao?tipo=comprador_id=${idUsuario}`)
 
 }

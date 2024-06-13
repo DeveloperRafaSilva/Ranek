@@ -24,7 +24,6 @@ export default function pegarDadosDoUsuario(){
         
 
         const dados = await response.json()
-        console.log(dados)
         if(dados){
             nome.value = dados.nome
             email.value = dados.email
@@ -35,6 +34,7 @@ export default function pegarDadosDoUsuario(){
             Cidade.value = dados.cidade
             Estado.value = dados.estado
         } 
+    window.localStorage.setItem("usuarioId",dados.id)
     }  
 }
     fazerFetch()

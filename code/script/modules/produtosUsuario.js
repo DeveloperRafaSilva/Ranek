@@ -1,7 +1,18 @@
 export default function produtosUsuario(){
-    const IdUsuario = window.localStorage.getItem("idUsuario")
+    const IdUsuario = window.localStorage.getItem("username")
+    const token = window.localStorage.getItem("token")
     const dataConteudoMeusProdutos = document.querySelector("[data-conteudo-meus-produtos]")
-    fetch(`https://ranekapi.origamid.dev/json/api/produto?usuario_id=lobo@origamid.com`).then(response => response.json()).then(dados => {
+     async function peagrProdutosUsuarioPostado(url){
+        const corpoApi = {
+            method:"GET",
+            headers:{
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            }
+        }
+        const response = await fetch(url,corpoApi)
+        const dados = await response.json()
+        console.log(dados)
         dados.forEach(itemProdutos =>{
             const createDivProdutos = document.createElement("div")
             createDivProdutos.innerHTML = `
@@ -16,10 +27,10 @@ export default function produtosUsuario(){
                 </div>
             </div>
             `
-            if(dataConteudoMeusProdutos !== null){
-
-                dataConteudoMeusProdutos.appendChild(createDivProdutos)
-            }
-        })
-    })
+        if(dataConteudoMeusProdutos !== null){
+            dataConteudoMeusProdutos.appendChild(createDivProdutos)
+        }
+        }) 
+      }
+    peagrProdutosUsuarioPostado(`https://ranekapi.origamid.dev/json/api/produto?tipo=usuario_id=${IdUsuario}`)
 }

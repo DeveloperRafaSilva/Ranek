@@ -534,8 +534,8 @@ footer{
 }
 
 .produtos-comprados-container img{
-    width: 160px;
-    height: 120px;
+    width: 200px;
+    height: 100px;
     object-fit: cover;
     overflow: hidden;
 }
@@ -574,6 +574,15 @@ footer{
     display: grid;
     grid-template-columns: auto 1fr;
     align-items: end;
+    overflow: hidden;
+}
+
+
+.produtos-comprados-container2 img{
+    width: 200px;
+    height: 100px;
+    object-fit: cover;
+    overflow: hidden;
 }
 
 .titulo-de-entrega{
@@ -584,4 +593,8 @@ footer{
 
 .infos-da-entrega p{
     margin: .2rem 0;
+}
+
+.colum-1{
+    grid-column: 2;
 }

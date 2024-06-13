@@ -24,7 +24,7 @@ export default function postarProduto(){
 
         const resposta = await fetch(url,corpoApi)
         const dados = await resposta.json()
-        console.log(dados)
+        window.localStorage.setItem("indexProduto",dados.id)
     }
 
     const dataBtnPostar = document.querySelector("[data-btn-postar]")
