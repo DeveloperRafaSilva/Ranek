@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded",function(){
     const token = window.localStorage.getItem("token")
     const dataVendasContainer = document.querySelector("[data-vendas-container]")
-    const usuarioQueComprou = localStorage.getItem("username");
+    const usuarioQueComprou = localStorage.getItem("idUsuario");
     const vendedorProduto = localStorage.getItem("vendedorId");
    async function pegarVendasDoUsuario(){
     const corpoApi = {
@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded",function(){
             "Authorization": `Bearer ${token}`
         }
     }
-    const response = await fetch(`https://ranekapi.origamid.dev/json/api/transacao?tipo=vendedor_id=${usuarioQueComprou}`,corpoApi)
+    const response = await fetch(`https://ranekapi.origamid.dev/json/api/transacao?tipo=vendedor_id10696`,corpoApi)
     const dados = await response.json()
     const produtosArray = Array.from(dados)
     try{

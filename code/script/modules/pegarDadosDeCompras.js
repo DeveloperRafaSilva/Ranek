@@ -1,6 +1,6 @@
 export default function pegarDadosDeCompras(){
     const dataConteudoCompras = document.querySelector("[data-conteudo-compras]")
-    const idUsuario = window.localStorage.getItem("username")
+    const idUsuario = window.localStorage.getItem("idUsuario")
     const token = window.localStorage.getItem("token")
    async function pegarDadosDeCompras(url){
     const corpoApi = {
@@ -54,6 +54,6 @@ export default function pegarDadosDeCompras(){
     })
    }
 
-   pegarDadosDeCompras(`https://ranekapi.origamid.dev/json/api/transacao?tipo=comprador_id=${idUsuario}`)
+   pegarDadosDeCompras(`https://ranekapi.origamid.dev/json/api/transacao?comprador_id=${idUsuario}`)
 
 }

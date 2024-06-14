@@ -16,6 +16,7 @@ export default function criarUsuarioApi() {
         const estado = document.querySelector("[data-Estado]").value;
 
         const dados = {
+            id:email,
             nome: nome,
             email: email,
             senha: senha,
@@ -27,6 +28,7 @@ export default function criarUsuarioApi() {
             estado: estado
         };
 
+        window.localStorage.setItem("idUsuario", dados.id);
         const corpoAPI = {
             method: "POST",
             headers: {
@@ -42,6 +44,7 @@ export default function criarUsuarioApi() {
                     dataMenssagemDeErroUsuario.innerHTML = dados.message;
                 } else {
                     window.localStorage.setItem("dadosUsuario", dados.display_name);
+                    window.localStorage.setItem("id", dados.display_name);
                     console.log(dados)
                     fazerLoginAutomatico("https://ranekapi.origamid.dev/json/jwt-auth/v1/token", email, senha);
                 }

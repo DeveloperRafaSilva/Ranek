@@ -165,9 +165,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 comprarProduto(dadosProdutos,dados)
                 })
                 }  
-                async   function comprarProduto(produtoAComprar,dadosdeCompra){
-         console.log(produtoAComprar)
-
+        async   function comprarProduto(produtoAComprar,dadosdeCompra){
             const dadosDeCompras = {
                 comprador_id:usuarioQueComprou,
                 vendedor_id:produtoAComprar.usuario_id,
@@ -186,6 +184,7 @@ document.addEventListener("DOMContentLoaded", function() {
             }
             const response = await fetch("https://ranekapi.origamid.dev/json/api/transacao",corpoApi)
             const dados = await response.json()
+            console.log(dados)
 
         }
 
