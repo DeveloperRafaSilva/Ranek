@@ -19,11 +19,11 @@
     <main class="conta-container ">
         <div class="btns-conta-card">
             <ul class="lista-btns">
-                <li data-links-tabNav class="btns-link ativo"><a  href="#">Produtos</a></li>
-                <li data-links-tabNav class="btns-link"><a  href="#">Compras</a></li>
-                <li data-links-tabNav class="btns-link"><a  href="#">Vendas</a></li>
-                <li data-links-tabNav class="btns-link"><a  href="#">Editar Usuário</a></li>
-                <li data-btn-logof class="btns-link"><a  href="#">Deslogar</a></li>
+                <li><a data-links-tabNav class="btns-link ativo"  href="#">Produtos</a></li>
+                <li ><a data-links-tabNav class="btns-link"  href="#">Compras</a></li>
+                <li ><a data-links-tabNav class="btns-link"  href="#">Vendas</a></li>
+                <li ><a data-links-tabNav class="btns-link"  href="#">Editar Usuário</a></li>
+                <li data-btn-logof ><a class="btns-link"  href="#">Deslogar</a></li>
             </ul>
         </div>
         <div data-container-modal class="container-infos-card on">
@@ -40,14 +40,14 @@
                     </div>
                     <div class="login-campo-item">
                         <label for="Fotos">Fotos</label>
-                        <input type="file" name="Fotos" id="fotos-produto" multiple="multiple">
+                        <input type="file" name="Fotos" id="fotos-produto" required multiple="multiple">
                     </div>
                     <div class="login-campo-item">
                         <label for="Descrição">Descrição</label>
                         <textarea name="Descrição" id="descricao-produto"></textarea>
-                    </div>
-                    <div class="btn-div postar-div-btn">
-                        <a data-btn-postar class="btn-principal" href="#">Adicionar Produto</a>
+                        <div class="btn-div postar-div-btn">
+                            <a data-btn-postar class="btn-form" href="#">Adicionar Produto</a>
+                        </div>
                     </div>
                 </form>
             </div>
@@ -110,9 +110,9 @@
                 <div class="login-campo-item">
                     <label for="Estado">Estado</label>
                     <input data-Estado type="Estado" name="Estado" id="Estado-user">
-                </div>
-                <div  class="btn-div btn">
-                    <a data-btn-atualizar-usuario class="btn-principal" href="#">Atualizar Usuário</a>
+                    <div  class="btn-div">
+                        <a data-btn-atualizar-usuario  href="#">Atualizar Usuário</a>
+                    </div>
                 </div>
             </form>
         </div>

@@ -11,6 +11,7 @@ export default function atualizarDados(){
         const cidade = document.querySelector("[data-Cidade]").value;
         const estado = document.querySelector("[data-Estado]").value;
         const infosDados = {
+            id:email,
             nome:nome,
             email:email,
             senha:senha,
@@ -21,9 +22,6 @@ export default function atualizarDados(){
             cidade:cidade,
             estado:estado,    
         }
-    
-        console.log(nome)
-
         const token = window.localStorage.getItem("token")
     
         const corpoApi = {

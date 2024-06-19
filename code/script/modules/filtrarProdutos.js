@@ -2,6 +2,7 @@ export default function filtrarProdutos(){
    const dataImagemBusca = document.querySelector("[data-imagem-busca]")
    const dataProdutosItem = document.querySelector("[data-produtos-item]")
    const loadingDiv = document.querySelector(".loading-div")
+   const dataPaginationContainer = document.querySelector("[data-pagination-container]");
    function pesquisarProduto(){
       try{
       const Pesquisa = document.getElementById("Pesquisa")
@@ -9,6 +10,8 @@ export default function filtrarProdutos(){
          const transformarEmArray = Array.from(dados)
          dataProdutosItem.innerHTML = ""
          transformarEmArray.forEach(itemProdutos =>{    
+            const transformarPreco = itemProdutos.preco
+            const stringPreco = transformarPreco.slice(0,1) + "." +  transformarPreco.slice(1) + ",00"
          if(itemProdutos.fotos === null){
             let criarEstruturaHtml =  document.createElement("div") 
             criarEstruturaHtml.innerHTML = `
@@ -16,7 +19,7 @@ export default function filtrarProdutos(){
             <div>
             </div>
             <div class="conteudo-produto-texto"> 
-               <p class="preco-produto2">R$${itemProdutos.preco}</p>
+               <p class="preco-produto2">R$ ${itemProdutos.preco}</p>
                <h2 class="nome-produto">${itemProdutos.nome}</h2>
                <p class="descricao-produtos2">${itemProdutos.descricao}</p>
             </div>
@@ -30,7 +33,7 @@ export default function filtrarProdutos(){
          <div>
          <img src="${itemProdutos.fotos[0].src}" alt="Produto eletrônicos" />
          </div>
-         <p class="preco-produto2">R$${itemProdutos.preco}</p>
+         <p class="preco-produto">R$${stringPreco}</p>
          <h2 class="nome-produto">${itemProdutos.nome}</h2>
          <p class="descricao-produtos2">${itemProdutos.descricao}</p>
          </div>

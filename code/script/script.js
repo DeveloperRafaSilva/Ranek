@@ -1,6 +1,7 @@
+import paginacaoProdutos from "./modules/paginacaoProdutos.js";
 import produtosUsuario from "./modules/produtosUsuario.js";
+import cepApi from "./modules/cepApi.js";
 import pegarDadosDoUsuario from "./modules/PegarDadosDoUsuario.js";
-import pegarProdutoApi from "./modules/pegarProdutoApi.js";
 import pegarDadosDeCompras2 from "./modules/pegarDadosDeCompras.js";
 import rotaProtegida from "./modules/rotaProtegida.js";
 import postarProduto from "./modules/postarProduto.js";
@@ -13,9 +14,10 @@ import ModalClick from "./modules/modalClick.js";
 import filtrarProdutos from "./modules/filtrarProdutos.js";
 import atualizarDados from "./modules/atualizarDadosDoUsuario.js";
 
+paginacaoProdutos()
 produtosUsuario()
+cepApi()
 pegarDadosDoUsuario()
-pegarProdutoApi()
 pegarDadosDeCompras2()
 rotaProtegida()
 postarProduto()
@@ -27,3 +29,4 @@ usuarioCriar()
 ModalClick()
 filtrarProdutos()
 atualizarDados()
+

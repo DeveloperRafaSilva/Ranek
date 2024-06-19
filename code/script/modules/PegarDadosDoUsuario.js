@@ -24,8 +24,6 @@ export default function pegarDadosDoUsuario(){
         
 
         const dados = await response.json()
-        console.log(dados)
-        window.localStorage.setItem("idUsuario", dados.id);
         if(dados){
             nome.value = dados.nome
             email.value = dados.email

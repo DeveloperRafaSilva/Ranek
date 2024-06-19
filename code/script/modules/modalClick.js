@@ -10,7 +10,7 @@ export default function ModalClick(){
 
       dataBtnCriarContaModal.addEventListener("click",(e)=>{
          e.preventDefault()
-         dataModalCriarConta.style.display = "flex"
+         dataModalCriarConta.style.display = "block"
          dataBtnCriarContaModal.style.display = "none"
       })
    }

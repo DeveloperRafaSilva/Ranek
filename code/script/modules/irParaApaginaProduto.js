@@ -1,7 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
     const loadingDiv = document.querySelector(".loading-div")
-    const usuarioQueComprou = localStorage.getItem("username");
-    const indexProduto = localStorage.getItem("indexProdutoItem");
     const dataProdutosItem = document.querySelector("[data-produtos-item2 ]")
     const token = window.localStorage.getItem("token")      
     // CODIGO DO PRODUTO PARA COLOCAR NA PÁGINA
@@ -18,11 +16,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
         const response = await fetch(url,corpoApiProduto)
         const dadosProdutos = await response.json()
+        console.log(dadosProdutos)
         criarHtmlDoProdutoItem(dadosProdutos)
     }
 
     function criarHtmlDoProdutoItem(dadosProdutos){
-        console.log(dadosProdutos)
         if(dadosProdutos.fotos === null || dadosProdutos.fotos === undefined){
             const criarImagemDoProduto = document.createElement("div")
             criarImagemDoProduto.classList.add("colum-1")
@@ -35,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function() {
             }else if(dadosProdutos.fotos[1] === undefined){
                 const criarImagemDoProduto = document.createElement("div")
                 criarImagemDoProduto.innerHTML = `
-                <div>
+                <div class="imagem-produto-pagina">
                     <img src="${dadosProdutos.fotos[0].src}" alt="${dadosProdutos.fotos[0].titulo}" />
                 </div>
                 `
@@ -50,18 +48,30 @@ document.addEventListener("DOMContentLoaded", function() {
             `
             dataProdutosItem.appendChild(criarImagemDoProduto)
          }
-        const criarCorpoDoProduto = document.createElement("div")
-        criarCorpoDoProduto.innerHTML = `
-            <div>
+         const criarCorpoDoProduto = document.createElement("div")
+         const transformarPreco = dadosProdutos.preco
+         const pegarValorDoPreco = transformarPreco.slice(0,1) + "." + transformarPreco.slice(1) + ",00"
+         criarCorpoDoProduto.innerHTML = `
+         <div>
                 <h1 class="nome-produto-page">${dadosProdutos.nome}</h1 class="preco-produto-page">
-                <p class="preco-produto-page">R$ ${dadosProdutos.preco}</p>
+                <p class="preco-produto">R$ ${pegarValorDoPreco}</p>
                 <p class="descricao-produto-page">${dadosProdutos.descricao}</p>
                 <div>
-                    <a data-abrir-formulario class="btn-principal" href="#">Comprar</a>
+                    <button data-abrir-formulario class="btn-principal" href="#">Comprar</button>
                 </div>
             </div>
         `
         dataProdutosItem.appendChild(criarCorpoDoProduto)
+        
+        const dataAbrirFormulario = document.querySelector("[data-abrir-formulario]")
+                 if(dadosProdutos.vendido === "true"){
+                    dataAbrirFormulario.innerHTML = "Produto Vendido"
+                    dataAbrirFormulario.classList.add("vendido")
+
+                    dataAbrirFormulario.disabled = true
+                }else{
+                    dataAbrirFormulario.innerHTML = "Comprar"
+                 }
 
         const botaoAbrirFormularo = document.querySelector("[data-abrir-formulario]")
 
@@ -73,7 +83,7 @@ document.addEventListener("DOMContentLoaded", function() {
             const corpoDoFormularioDeCompra = document.createElement("div")
             
             corpoDoFormularioDeCompra.innerHTML = `
-            <form data-formulario-abrir action="get">
+            <form data-formulario-abrir class="formulario-page" action="get">
             <h1>Endereço de Envio</h1>
                 <div class="login-campo-item">
                     <label for="Nome">Nome</label>
@@ -111,7 +121,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     <label for="Estado">Estado</label>
                     <input data-Estado type="Estado" name="Estado" id="Estado-user">
                 </div>
-                <div  class="btn-div btn">
+                <div class="btn-div-comprar">
                     <a data-btn-comprar-produto class="btn-comprar" href="#">Finalizar compra</a>
                 </div>
             </form>
@@ -166,13 +176,15 @@ document.addEventListener("DOMContentLoaded", function() {
                 })
                 }  
         async   function comprarProduto(produtoAComprar,dadosdeCompra){
+            window.localStorage.setItem("compradorEmail",dadosdeCompra.email)
             const dadosDeCompras = {
-                comprador_id:usuarioQueComprou,
+                comprador_id:dadosdeCompra.email,
                 vendedor_id:produtoAComprar.usuario_id,
                 endereco:dadosdeCompra,
                 produto:produtoAComprar,
             }
-            window.localStorage.setItem("vendedorId",produtoAComprar.usuario_id)
+            window.localStorage.setItem("vendedorId",dadosDeCompras.vendedor_id)
+            window.localStorage.setItem("compradorId",dadosDeCompras.comprador_id)
 
             const corpoApi = {
                 method:"POST",
@@ -184,10 +196,16 @@ document.addEventListener("DOMContentLoaded", function() {
             }
             const response = await fetch("https://ranekapi.origamid.dev/json/api/transacao",corpoApi)
             const dados = await response.json()
-            console.log(dados)
 
         }
-
-        criarAPaginaDosProdutos(`https://ranekapi.origamid.dev/json/api/produto/${indexProduto}`);
-})
+        
+        const indexProduto2 = localStorage.getItem("indexProdutoItem2");
+        const indexProduto = localStorage.getItem("indexProdutoItem");
+        if(indexProduto2 === null){
+            criarAPaginaDosProdutos(`https://ranekapi.origamid.dev/json/api/produto/${indexProduto}`);
+            
+        }else{
+            criarAPaginaDosProdutos(`https://ranekapi.origamid.dev/json/api/produto/${indexProduto2}`);
+        }
+    })
 

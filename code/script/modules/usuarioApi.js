@@ -45,7 +45,6 @@ export default function criarUsuarioApi() {
                 } else {
                     window.localStorage.setItem("dadosUsuario", dados.display_name);
                     window.localStorage.setItem("id", dados.display_name);
-                    console.log(dados)
                     fazerLoginAutomatico("https://ranekapi.origamid.dev/json/jwt-auth/v1/token", email, senha);
                 }
             });
@@ -70,7 +69,6 @@ export default function criarUsuarioApi() {
             .then(dados => {
                 console.log(dados);
                 window.localStorage.setItem("token", dados.token);
-                window.localStorage.setItem("username", dados.user_email);
                 window.location.href = "http://127.0.0.1:5500/code/PageConta/conta.html#"
             });
     }

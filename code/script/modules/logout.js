@@ -10,7 +10,6 @@ export default function logOut(){
             window.localStorage.removeItem("indexProduto")
             window.localStorage.removeItem("indexProdutoItem")
             window.localStorage.removeItem("idUsuario")
-            window.localStorage.removeItem("username")
             window.localStorage.removeItem("dadosUsuario")
             window.localStorage.removeItem("vendedotId")
             window.localStorage.removeItem("id")

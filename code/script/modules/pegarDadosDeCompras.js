@@ -20,13 +20,13 @@ export default function pegarDadosDeCompras(){
         const criarDivParaOsElementosDeCompra = document.createElement("div")
         if(produtosComprados.produto.fotos === null){
             criarDivParaOsElementosDeCompra.innerHTML = `
-            <div class="produtos-comprados-container">
+            <div data-index-produto class="produtos-comprados-container">
                 <div>
                     
                 </div>
                 <div class="card-produtos-comprados">
                     <p class="preco-produto-comprado">R$ ${novoString},00</p>
-                    <p class="nome-produto">R$${produtosComprados.produto.nome}</p>
+                    <p class="nome-produto">${produtosComprados.produto.nome}</p>
                     <p><span class="vendedor-nome">vendedor</span> ${produtosComprados.produto.usuario_id}</p>
                 </div>
             </div>
@@ -36,13 +36,13 @@ export default function pegarDadosDeCompras(){
             }
           }else{
             criarDivParaOsElementosDeCompra.innerHTML = `
-            <div class="produtos-comprados-container">
+            <div data-index-produto class="produtos-comprados-container">
                 <div>
                     <img src="${produtosComprados.produto.fotos[0].src}" alt="${produtosComprados.titulo}"/>
                 </div>
                 <div class="card-produtos-comprados">
                     <p class="preco-produto-comprado">R$ ${novoString},00</p>
-                    <p class="nome-produto">R$${produtosComprados.produto.nome}</p>
+                    <p class="nome-produto">${produtosComprados.produto.nome}</p>
                     <p><span class="vendedor-nome">vendedor</span> ${produtosComprados.produto.usuario_id}</p>
                 </div>
             </div>
@@ -50,6 +50,21 @@ export default function pegarDadosDeCompras(){
           }
         if(dataConteudoCompras !== null){
             dataConteudoCompras.appendChild(criarDivParaOsElementosDeCompra)
+        }
+
+        const dataIndexProdutos = document.querySelectorAll(`[data-index-produto]`)
+        dataIndexProdutos.forEach((itemClick,index) =>{
+           itemClick.addEventListener("click",(e)=>{
+              e.preventDefault()
+            pegarIdProduto(index)
+            const produtoId = dados[index].produto.id
+
+           window.localStorage.removeItem("indexProdutoItem2")
+           window.localStorage.setItem("indexProdutoItem",produtoId)
+           })
+        })
+        function pegarIdProduto(index){
+             window.location.href =  "http://127.0.0.1:5500/code/pageProduto/pageProduto.html"
         }
     })
    }
